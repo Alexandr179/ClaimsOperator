@@ -1,0 +1,63 @@
+
+### get all Users (ADMIN)
+GET http://localhost/api/v0.1/users
+Authentication: admin_token
+
+
+### set OPERATOR-state for userId (ADMIN)
+POST http://localhost/api/v0.1/users/2/state/operator
+Authentication: admin_token
+Content-Type: application/json
+
+
+### get SENDED claims (OPERATOR)
+GET http://localhost/api/v0.1/claims/sended
+Authentication: operator_token
+
+
+### set ASSEPT-state claims (OPERATOR)
+POST http://localhost/api/v0.1/claims/2/accepted
+Authentication: operator_token
+Content-Type: application/json
+
+
+### set REJECTED-state claims (OPERATOR)
+POST http://localhost/api/v0.1/claims/2/rejected
+Authentication: operator_token
+Content-Type: application/json
+
+
+### add new Claim (USER2 "userId":3)
+POST http://localhost/api/v0.1/claims
+Authentication: user2_token
+Content-Type: application/json
+
+{
+  "id": null,
+  "text": "Test's claim (DRAFT), User2 with - token:user2_token  and userId=3",
+  "state": "DRAFT",
+  "userId": 3
+}
+
+### get users Claims (USER)
+GET http://localhost/api/v0.1/claims/user/2
+Authentication: user1_token
+
+
+### update Claim with DRAFT-state (USER2 "userId":3)
+POST http://localhost/api/v0.1/claims
+Authentication: user2_token
+Content-Type: application/json
+
+{
+  "id": null,
+  "text": "Updated text .. .. ... xxxx xxxxx",
+  "state": "DRAFT",
+  "userId": 3
+}
+
+
+### set SENDED-state Claim (USER2 "userId":3)
+POST http://localhost/api/v0.1/claims/2/send
+Authentication: user2_token
+Content-Type: application/json
